@@ -1,7 +1,11 @@
+import java.text.DecimalFormat;
+
 public class Temperature {
     public static double convertTemp(Double temp, boolean entKelvin, boolean entCelsius, boolean entFahrenheit,
                                      boolean exitKelvin, boolean exitCelsius, boolean exitFahrenheit) {
+
         double tempConvertida = 0;
+
         if (entKelvin && exitCelsius){
             tempConvertida = temp - 273.15;
 
@@ -20,7 +24,6 @@ public class Temperature {
         } else if (entCelsius && exitKelvin) {
             tempConvertida = temp + 273.15;
         }
-
-        return tempConvertida;
+        return Math.round(tempConvertida);
     }
 }
