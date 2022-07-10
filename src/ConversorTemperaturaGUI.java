@@ -25,28 +25,9 @@ public class ConversorTemperaturaGUI extends JFrame{
         ConverterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 double inputTemp = Double.parseDouble(textFieldUserInput.getText());
-                Double outputTemp = null;
-
-                if (userInTempK.isSelected() && userOutTempC.isSelected()) {
-                    //boolean kelvin_celsius = true;
-                    outputTemp = inputTemp - 273.15;
-
-                } else if (userInTempK.isSelected() && userOutTempF.isSelected()) {
-                    outputTemp = ((inputTemp -273.15)/5*9)+32;
-
-                } else if (userInTempF.isSelected() && userOutTempC.isSelected()) {
-                    outputTemp = (inputTemp-32)/9*5;
-
-                } else if (userInTempF.isSelected() && userOutTempK.isSelected()) {
-                    outputTemp = ((inputTemp-32)/9*5) + 273.15;
-
-                } else if (userInTempC.isSelected() && userOutTempK.isSelected()) {
-                    outputTemp = inputTemp + 273.15;
-
-                } else if (userInTempC.isSelected() && userOutTempF.isSelected()) {
-                    outputTemp = (inputTemp/5*9)+32;
-                }
-
+                double outputTemp = Temperature.convertTemp(inputTemp, userInTempK.isSelected(), userInTempC.isSelected(),
+                        userInTempF.isSelected(), userOutTempK.isSelected(), userOutTempC.isSelected(),
+                        userOutTempF.isSelected());
                 textFieldSysOutput.setText(outputTemp + "");
             }
         });
